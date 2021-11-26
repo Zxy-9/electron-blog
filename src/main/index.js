@@ -30,7 +30,39 @@ function createWindow () {
     mainWindow = null
   })
 }
-
+const menuTemplate = [{
+  label: '主页',
+  click() {
+    mainWindow.webContents.send('href', '/index');
+  }
+},
+{
+	label:'file对象',
+	click() {
+	  mainWindow.webContents.send('href', '/file');
+	}
+},
+{
+  label: '测试页',
+  submenu: [
+    {
+      label: '第1页',
+      click() {
+        mainWindow.webContents.send('href', '/page1');
+      }
+    },
+    {
+      label: '第2页',
+      click() {
+        mainWindow.webContents.send('href', '/page2');
+      }
+    }
+  ]
+}
+];
+ 
+var Menu = require('electron').Menu;
+Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate));
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
