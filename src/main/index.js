@@ -43,16 +43,16 @@ const menuTemplate = [{
 	}
 },
 {
-  label: '测试页',
+  label: '窗口打开/代理',
   submenu: [
     {
-      label: '第1页',
+      label: 'window.open',
       click() {
         mainWindow.webContents.send('href', '/page1');
       }
     },
     {
-      label: '第2页',
+      label: 'BrowserWindowProxy',
       click() {
         mainWindow.webContents.send('href', '/page2');
       }
